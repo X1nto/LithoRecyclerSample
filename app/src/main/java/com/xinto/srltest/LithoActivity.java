@@ -25,5 +25,4 @@ public class LithoActivity extends AppCompatActivity {
 
         setContentView(LithoView.create(this, recycler));
     }
-
 }

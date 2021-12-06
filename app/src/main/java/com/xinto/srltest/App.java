@@ -10,5 +10,4 @@ public class App extends Application {
         super.onCreate();
         SoLoader.init(this, false);
     }
-
 }

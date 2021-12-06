@@ -7,7 +7,6 @@ import com.facebook.litho.sections.annotations.GroupSectionSpec;
 import com.facebook.litho.sections.annotations.OnCreateChildren;
 import com.facebook.litho.sections.common.SingleComponentSection;
 import com.facebook.litho.widget.EmptyComponent;
-import com.facebook.litho.widget.Text;
 
 @GroupSectionSpec
 class CardGroupSpec {
@@ -15,33 +14,21 @@ class CardGroupSpec {
     @OnCreateChildren
     static Children OnCreateChildren(SectionContext c) {
         Children.Builder builder = Children.create();
-        EmptyComponent.Builder emptyComponent = EmptyComponent.create(c); // Causes bug even without specifying height attribute
-        CardItem.Builder cardComponent = CardItem.create(c);
-        Text.Builder text = Text.create(c)
-            .text("")
-            .heightDip(1f);
-
-        Component currentComponent;
 
         for (int i = 0; i < 8; i++) {
-            currentComponent = cardComponent.build();
+            Component component = CardItem.create(c).build();;
 
-            //The problematic place
+            //Uncomment this line to reproduce the bug
             if (i == 0) {
-                currentComponent = text.build();
+                component = EmptyComponent.create(c).build(); //Also works with Text.create(c).heightDip(0f).build();
             }
 
             builder.child(
                 SingleComponentSection
                     .create(c)
-                    .component(currentComponent)
+                    .component(component)
             );
-
-
         }
         return builder.build();
     }
-
-
 }
-

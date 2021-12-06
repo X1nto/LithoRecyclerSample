@@ -27,6 +27,4 @@ class CardItemSpec {
             )
             .build();
     }
-
 }
-
