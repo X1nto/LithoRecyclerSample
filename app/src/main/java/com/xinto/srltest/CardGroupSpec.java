@@ -16,12 +16,12 @@ class CardGroupSpec {
         Children.Builder builder = Children.create();
 
         for (int i = 0; i < 8; i++) {
-            Component component = CardItem.create(c).build();;
+            Component component = CardItem.create(c).build();
 
             //Uncomment this line to reproduce the bug
-            if (i == 0) {
-                component = EmptyComponent.create(c).build(); //Also works with Text.create(c).heightDip(0f).build();
-            }
+//            if (i == 0) {
+//                component = EmptyComponent.create(c).build(); //Also works with Text.create(c).heightDip(0f).build();
+//            }
 
             builder.child(
                 SingleComponentSection
